@@ -2,7 +2,8 @@ var express = require('express');
 var app = express();
 var moment = require('moment');
 
-app.use(express.static('public'));
+app.set('port', (process.env.PORT || 3000);
+app.use(express.static(__dirname + '/public'));
 app.set('view engine','ejs');
 
 app.get('/', function(req, res) {
@@ -35,6 +36,6 @@ app.get('/:id', function(req, res) {
     }
 });
 
-app.listen('3000', function() {
-    console.log('Server listening on PORT 3000');
+app.listen(app.get('port'), function() {
+    console.log('Timestamp Service app is running on port', app.get('port'));
 });
